@@ -21,6 +21,8 @@
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "error",
      "no-const-assign": "off",
     "array-callback-return": "off",
     "@typescript-eslint/no-unused-vars": [
@@ -39,6 +41,7 @@
     "@typescript-eslint/camelcase": "off",
     "prettier/prettier": "error",
     "class-methods-use-this": "off",
+    "no-empty-function": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

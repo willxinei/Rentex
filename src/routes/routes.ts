@@ -3,6 +3,6 @@ import categoryRoutes from './categories.routes';
 
 const Routes = Router();
 
-Routes.use(categoryRoutes);
+Routes.use('/categories', categoryRoutes);
 
 export default Routes;
