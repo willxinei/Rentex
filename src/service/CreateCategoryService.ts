@@ -1,5 +1,4 @@
 import AppError from 'errors/AppError';
-import { Category } from 'model/Category';
 import { CategoryRepository } from 'repositories/CategoryRepository';
 
 interface IRequest {

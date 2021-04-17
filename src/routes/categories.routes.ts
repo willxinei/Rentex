@@ -1,4 +1,3 @@
-import AppError from 'errors/AppError';
 import { Router } from 'express';
 import { CategoryRepository } from 'repositories/CategoryRepository';
 import { CreateCategoryService } from 'service/CreateCategoryService';
