@@ -1,3 +1,4 @@
+import AppError from 'errors/AppError';
 import { Router } from 'express';
 import { CategoryRepository } from 'repositories/CategoryRepository';
 
@@ -7,6 +8,12 @@ const categoriesRepository = new CategoryRepository();
 
 categoryRoutes.post('/', (req, res) => {
     const { name, description } = req.body;
+
+    const find = categoriesRepository.findByName(name);
+
+    if (find) {
+        throw new AppError('ja existe');
+    }
 
     const category = categoriesRepository.create({ name, description });
 
