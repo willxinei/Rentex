@@ -1,6 +1,7 @@
 import AppError from 'errors/AppError';
 import { Router } from 'express';
 import { CategoryRepository } from 'repositories/CategoryRepository';
+import { CreateCategoryService } from 'service/CreateCategoryService';
 
 const categoryRoutes = Router();
 
@@ -8,16 +9,11 @@ const categoriesRepository = new CategoryRepository();
 
 categoryRoutes.post('/', (req, res) => {
     const { name, description } = req.body;
+    const createService = new CreateCategoryService(categoriesRepository);
 
-    const find = categoriesRepository.findByName(name);
+    const create = createService.execute({ name, description });
 
-    if (find) {
-        throw new AppError('ja existe');
-    }
-
-    const category = categoriesRepository.create({ name, description });
-
-    return res.status(201).send(category);
+    return res.status(201).json(create);
 });
 
 categoryRoutes.get('/', (req, res) => {
