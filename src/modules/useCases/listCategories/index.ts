@@ -2,7 +2,7 @@ import { CategoryRepository } from '@modules/cars/repositories/CategoryRepositor
 import { ListCategoriesController } from './ListCategoriesController';
 import { ListCategoriesUseCase } from './ListCategoriesUseCase';
 
-const categoryRepository = new CategoryRepository();
+const categoryRepository = CategoryRepository.getInstace();
 const listCategoryUseCase = new ListCategoriesUseCase(categoryRepository);
 const listCategoryController = new ListCategoriesController(
     listCategoryUseCase,
