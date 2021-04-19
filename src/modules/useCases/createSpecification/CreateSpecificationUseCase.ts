@@ -1,12 +1,12 @@
+import { Specificationrepository } from '@modules/cars/repositories/implementations/SpecificationRepository';
 import AppError from 'errors/AppError';
-import { ISpecificationRepository } from '../repositories/ISpecificationsRepository';
 
 interface IRequest {
     name: string;
     description: string;
 }
-export class CreateSpecificationService {
-    constructor(private specificationRepository: ISpecificationRepository) {}
+export class CreateSpecificationUseCase {
+    constructor(private specificationRepository: Specificationrepository) {}
 
     execute({ name, description }: IRequest): void {
         const find = this.specificationRepository.findByName(name);
@@ -14,11 +14,9 @@ export class CreateSpecificationService {
         if (find) {
             throw new AppError('ja existe');
         }
-        const spefication = this.specificationRepository.create({
+        this.specificationRepository.create({
             name,
             description,
         });
-
-        return spefication;
     }
 }

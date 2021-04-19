@@ -1,11 +1,10 @@
-import { CategoryRepository } from '@modules/cars/repositories/CategoryRepository';
+import { CategoryRepository } from '@modules/cars/repositories/implementations/CategoryRepository';
 import AppError from 'errors/AppError';
 
 interface IRequest {
     name: string;
     description: string;
 }
-// const categoriesRepository = new CategoryRepository();
 
 export class CreateCategorieUseCase {
     constructor(private categoriesRepository: CategoryRepository) {}

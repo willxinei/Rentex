@@ -11,6 +11,6 @@ export class CreateCategoriesController {
             name,
             description,
         });
-        return res.status(202).json(categorie);
+        return res.status(201).json(categorie);
     }
 }

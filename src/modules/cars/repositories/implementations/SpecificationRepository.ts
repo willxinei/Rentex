@@ -1,14 +1,27 @@
-import { Specification } from '../model/Specification';
+import { Specification } from '@modules/cars/model/Specification';
 import {
     ICreateSpecificationDTO,
     ISpecificationRepository,
-} from './ISpecificationsRepository';
+} from '../ISpecificationsRepository';
 
 export class Specificationrepository implements ISpecificationRepository {
     private specifications: Specification[];
 
-    constructor() {
+    private static INSTACE: Specificationrepository;
+
+    private constructor() {
         this.specifications = [];
+    }
+
+    public static getInstace(): Specificationrepository {
+        if (!Specificationrepository.INSTACE) {
+            Specificationrepository.INSTACE = new Specificationrepository();
+        }
+        return Specificationrepository.INSTACE;
+    }
+
+    list(): Specification[] {
+        return this.specifications;
     }
 
     findByName(name: string): Specification | undefined {
