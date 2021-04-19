@@ -1,5 +1,5 @@
+import { CategoryRepository } from '@modules/cars/repositories/CategoryRepository';
 import AppError from 'errors/AppError';
-import { CategoryRepository } from '../repositories/CategoryRepository';
 
 interface IRequest {
     name: string;
@@ -7,7 +7,7 @@ interface IRequest {
 }
 // const categoriesRepository = new CategoryRepository();
 
-export class CreateCategoryService {
+export class CreateCategorieUseCase {
     constructor(private categoriesRepository: CategoryRepository) {}
 
     execute({ description, name }: IRequest): void {
